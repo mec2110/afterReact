@@ -15,10 +15,7 @@ function App() {
                 <Route path="/" element={<ItemListContainer />} />
                 <Route path="/category/:id" element={<ItemListContainer />} />
                 <Route path="/item/:id" element={<ItemDetailContainer />} />
-                <Route
-                    path="/contador"
-                    element={<Efecto stock={10} inicial={0} />}
-                />
+                <Route path="/contador" element={<Efecto />} />
             </Routes>
         </Router>
     );
