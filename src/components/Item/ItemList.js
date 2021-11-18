@@ -4,9 +4,18 @@ import Item from './Item';
 const ItemList = ({ items }) => {
     return (
         <>
-            {items.map((item) => (
-                <Item key={item.id} item={item} />
-            ))}
+            <div
+                style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    maxWidth: '80%',
+                    margin: '0 auto',
+                }}
+            >
+                {items.map((item) => (
+                    <Item key={item.id} {...item} />
+                ))}
+            </div>
         </>
     );
 };

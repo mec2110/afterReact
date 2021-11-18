@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import ItemList from './ItemList';
 import { products } from './items';
+import { useParams } from 'react-router';
 
-const ItemListContainer = ({ saludo }) => {
+const ItemListContainer = () => {
     const [items, setItems] = useState([]);
+    const { id } = useParams();
 
     useEffect(() => {
         const traerProductos = new Promise((resolve, reject) => {
@@ -13,17 +15,16 @@ const ItemListContainer = ({ saludo }) => {
         });
         traerProductos
             .then((res) => {
-                setItems(res);
-                console.log(res);
+                const categorias = res.filter((i) => i.category === `${id}`);
+                id === undefined ? setItems(res) : setItems(categorias);
             })
             .catch((error) => {
-                console.log(error);
+                console.error(error);
             });
-    }, []);
+    }, [id]);
 
     return (
         <>
-            <h1>{saludo}</h1>
             <ItemList items={items} />
         </>
     );

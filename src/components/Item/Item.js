@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Item = ({ item }) => {
+const Item = ({ img, price }) => {
     return (
-        <div>
-            <img src={item.img} alt="producto" />
-            <p>${item.price}</p>
+        <div style={{ margin: '10px 20px', border: '2px solid black' }}>
+            <img width="200px" src={img} alt="producto" />
+            <p>${price}</p>
         </div>
     );
 };
