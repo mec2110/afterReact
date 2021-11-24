@@ -14,8 +14,10 @@ const Counter = ({ stock }) => {
     return (
         <div>
             <p>{number}</p>
-            <button onClick={add}>+</button>
-            <button onClick={substract}>-</button>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <button onClick={add}>+</button>
+                <button onClick={substract}>-</button>
+            </div>
         </div>
     );
 };
