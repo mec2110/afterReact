@@ -1,5 +1,5 @@
 import './App.css';
-import Efecto from './components/Efecto';
+import Counter from './components/Counter';
 import ItemListContainer from './components/Item/ItemListContainer';
 import ItemDetailContainer from './components/Item/ItemDetailContainer';
 import Navbar from './components/Navbar/Navbar';
@@ -15,7 +15,7 @@ function App() {
                 <Route path="/" element={<ItemListContainer />} />
                 <Route path="/category/:id" element={<ItemListContainer />} />
                 <Route path="/item/:id" element={<ItemDetailContainer />} />
-                <Route path="/contador" element={<Efecto />} />
+                <Route path="/contador" element={<Counter />} />
             </Routes>
         </Router>
     );

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Efecto = ({ stock }) => {
+const Counter = ({ stock }) => {
     const [number, setNumber] = useState(0);
 
     const add = () => {
@@ -20,4 +20,4 @@ const Efecto = ({ stock }) => {
     );
 };
 
-export default Efecto;
+export default Counter;

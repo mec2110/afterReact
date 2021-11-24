@@ -1,5 +1,5 @@
 import React from 'react';
-import Efecto from '../Efecto';
+import Counter from '../Counter';
 
 const ItemDetail = ({ item }) => {
     return (
@@ -8,7 +8,7 @@ const ItemDetail = ({ item }) => {
             <div>
                 <h2>{item.name}</h2>
                 <h3>$ {item.price}</h3>
-                <Efecto stock={item.stock} />
+                <Counter stock={item.stock} />
             </div>
         </div>
     );
