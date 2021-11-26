@@ -1,5 +1,9 @@
 # Getting Started with Create React App
 
+```
+aca va código
+```
+
 ![Ropa](public/img/camisa.jpg)
 
 ## Available Scripts
