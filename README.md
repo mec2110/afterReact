@@ -1,10 +1,7 @@
 # Getting Started with Create React App
 
-```
-javascript
-
-const eric = "Tutor"
-aca va código
+```javascript
+const eric = 'Tutor';
 ```
 
 ![Ropa](public/img/camisa.jpg)
