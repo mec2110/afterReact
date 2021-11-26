@@ -22,8 +22,8 @@ const Navbar = () => {
                 <Link style={{ margin: '0px 10px' }} to="/category/camisas">
                     Camisas
                 </Link>
-                <Link style={{ margin: '0px 10px' }} to="/contador">
-                    Contador
+                <Link style={{ margin: '0px 10px' }} to="/cart">
+                    Cart
                 </Link>
             </ul>
         </nav>

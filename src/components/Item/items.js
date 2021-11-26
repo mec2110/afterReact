@@ -2,7 +2,7 @@ export const products = [
     {
         name: 'Remera',
         price: 200,
-        stock: 10,
+        stock: 4,
         id: 1,
         img: 'https://res.cloudinary.com/ericwaje/image/upload/v1619372707/remera3_vc9mqa.jpg',
         category: 'remeras',
@@ -58,7 +58,7 @@ export const products = [
     {
         name: 'Gorra2',
         price: 88,
-        stock: 20,
+        stock: 5,
         id: 44,
         img: 'https://res.cloudinary.com/ericwaje/image/upload/v1619372706/gorra4C_nyvjj6.jpg',
         category: 'gorras',
