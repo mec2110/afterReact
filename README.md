@@ -1,6 +1,9 @@
 # Getting Started with Create React App
 
 ```
+javascript
+
+const eric = "Tutor"
 aca va código
 ```
 
