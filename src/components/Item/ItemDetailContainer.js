@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
 import ItemDetail from './ItemDetail';
 import { products } from './items';
 import { useParams } from 'react-router';
@@ -8,6 +9,7 @@ const ItemDetailContainer = () => {
     const [irAlCarrito, setIrAlCarrito] = useState(false);
     const [item, setItem] = useState({});
     const { id } = useParams();
+    const { addToCart } = useContext(CartContext);
 
     useEffect(() => {
         setLoading(true);
@@ -29,7 +31,9 @@ const ItemDetailContainer = () => {
 
     const onAdd = (cantidad) => {
         //console.log(cantidad, item);
-        console.log({ ...item, quantity: cantidad });
+        //console.log({ ...item, quantity: cantidad });
+        addToCart(item, cantidad);
+
         setIrAlCarrito(true);
     };
 
