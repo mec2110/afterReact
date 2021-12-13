@@ -4,29 +4,46 @@ export const CartContext = React.createContext();
 
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
+    const [number, setNumber] = useState(0);
 
-    //VALIDAR SI YA TENGO EL PRODUCTO, EN CASO DE QUE LO TENGA EN EL CARRITO, SOLO SUMAR LA CANTIDAD
+    const stock = cart.map((i) => {
+        return i.stock;
+    });
+    console.log(stock);
+
+    const add = () => {
+        number !== stock && setNumber(number + 1);
+    };
+
+    const substract = () => {
+        number !== 0 && setNumber(number - 1);
+    };
+
+    const updateQty = ({ e }) => {
+        setNumber(e.value);
+    };
+
     const addToCart = (item, cantidad) => {
-        //CALCULANDO EL TOTAL DEL CARRITO
-        //ESTA EN EL CARRITO?
-        //SI, ESTA. SUMAR CANTIDAD
-        //NO ESTA EN EL  CARRITO?
-        //LO SETEO
-        //PRIMERO VALIDO Y LUEGO SETEO EN EL ESTADO
         setCart([...cart, { ...item, cantidad }]);
         console.log(cart);
     };
 
-    //BORRAR TODOS LOS ITEMS DEL CARRITO
     const borrar = () => {
         setCart([]);
     };
 
-    //BORRAR SOLO EL QUE ELIGO CON FILTER POR ID
-
-    //CONTANDO LAS UNIDADES
     return (
-        <CartContext.Provider value={{ addToCart, cart, borrar }}>
+        <CartContext.Provider
+            value={{
+                addToCart,
+                cart,
+                borrar,
+                add,
+                substract,
+                number,
+                updateQty,
+            }}
+        >
             {children}
         </CartContext.Provider>
     );

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
 import Counter from '../Counter';
 
 const ItemDetail = ({ item, onAdd, irAlCarrito }) => {
+    const { number } = useContext(CartContext);
     return (
         <div style={{ display: 'flex' }}>
             <img src={item.img} alt="img" />
@@ -18,6 +20,9 @@ const ItemDetail = ({ item, onAdd, irAlCarrito }) => {
                         <Counter stock={item.stock} onAdd={onAdd} />
                     </>
                 )}
+                <button onClick={() => onAdd(number)}>
+                    Agregar al carrito
+                </button>
             </div>
         </div>
     );
