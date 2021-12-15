@@ -4,6 +4,10 @@
 const eric = 'Tutor';
 ```
 
+```
+npm start
+```
+
 ![Ropa](public/img/camisa.jpg)
 
 ## Available Scripts

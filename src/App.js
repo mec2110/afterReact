@@ -1,10 +1,10 @@
 import './App.css';
-import Counter from './components/Counter';
+//import Counter from './components/Counter';
 import ItemListContainer from './components/Item/ItemListContainer';
 import ItemDetailContainer from './components/Item/ItemDetailContainer';
 import Navbar from './components/Navbar/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-//import Cart from './components/Cart';
+import Cart from './components/Cart';
 import { CartProvider } from './context/CartContext';
 
 function App() {
@@ -19,7 +19,8 @@ function App() {
                         element={<ItemListContainer />}
                     />
                     <Route path="/item/:id" element={<ItemDetailContainer />} />
-                    <Route path="/contador" element={<Counter />} />
+
+                    <Route path="/cart" element={<Cart />} />
                 </Routes>
             </Router>
         </CartProvider>
