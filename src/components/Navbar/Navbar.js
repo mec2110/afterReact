@@ -12,7 +12,9 @@ const Navbar = () => {
                 padding: '10px',
             }}
         >
-            <h2>After React</h2>
+            <Link to="/">
+                <h2>After React</h2>
+            </Link>
             <ul
                 style={{
                     display: 'flex',
