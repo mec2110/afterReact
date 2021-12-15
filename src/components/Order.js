@@ -4,7 +4,6 @@ import {
     getDocs,
     orderBy,
     query,
-    where,
 } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
 import Mensaje from './Mensaje';
@@ -13,17 +12,12 @@ import { CartContext } from '../context/CartContext';
 
 const Order = () => {
     const [order, setOrder] = useState([]);
-    //const { userEmail } = useContext(CartContext);
-    //const { email } = userEmail;
-    //console.log(email);
+    const { userEmail } = useContext(CartContext);
+    const { email } = userEmail;
 
     useEffect(() => {
         const db = getFirestore();
-        const ref = query(
-            collection(db, 'ticket'),
-            orderBy('date')
-            //where('buyer', '=', `${email}`),
-        );
+        const ref = query(collection(db, 'ticket'), orderBy('date'));
         getDocs(ref).then((snapshot) => {
             const orden = snapshot.docs.map((doc) => {
                 const data = doc.data();
@@ -39,9 +33,9 @@ const Order = () => {
                     date: normalizedCreatedAt,
                 };
             });
-            setOrder(orden);
+            setOrder(orden.filter((x) => x.buyer === email));
         });
-    }, []);
+    }, [email]);
 
     return (
         <div>

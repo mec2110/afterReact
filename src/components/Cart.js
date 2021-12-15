@@ -1,5 +1,5 @@
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { CartContext } from '../context/CartContext';
 import CartDetail from './CartDetail';
 import Order from './Order';
@@ -8,8 +8,6 @@ const Cart = () => {
     const { cart, total, deleteAll, getUser } = useContext(CartContext);
     const [goTicket, setGoTicket] = useState(false);
     const [form, getForm] = useState({ nombre: '', email: '' });
-
-    useEffect(() => {}, [form]);
 
     const llenarFormulario = (e) => {
         const { name, value } = e.target;

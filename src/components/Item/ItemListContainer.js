@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ItemList from './ItemList';
 import { useParams } from 'react-router';
-import { collection, getDocs, getFirestore } from 'firebase/firestore';
+import { collection, getDocs, getFirestore, query } from 'firebase/firestore';
 
 const ItemListContainer = () => {
     const [items, setItems] = useState([]);
@@ -9,7 +9,7 @@ const ItemListContainer = () => {
 
     useEffect(() => {
         const db = getFirestore();
-        const ref = collection(db, 'products');
+        const ref = query(collection(db, 'products'));
         getDocs(ref).then((snapshot) => {
             const prod = snapshot.docs.map((doc) => {
                 return {

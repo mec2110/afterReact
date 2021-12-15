@@ -2,6 +2,7 @@ import React from 'react';
 
 const Mensaje = ({ ord }) => {
     const nameprod = ord.items.map((x) => x.name);
+    const { buyer } = ord;
 
     return (
         <div
@@ -14,6 +15,7 @@ const Mensaje = ({ ord }) => {
             <h2 style={{ color: 'red', fontSize: '17px' }}>{ord.id}</h2>
             <h2 style={{ fontSize: '15px' }}>{ord.date}</h2>
             <h2 style={{ fontSize: '15px' }}>{nameprod}</h2>
+            <h2 style={{ fontSize: '15px' }}>{buyer}</h2>
         </div>
     );
 };
