@@ -1,28 +1,26 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { CartContext } from '../../context/CartContext';
-import Counter from '../Counter';
+import React from 'react';
 
-const ItemDetail = ({ item, onAdd, irAlCarrito }) => {
-    const { number } = useContext(CartContext);
+const ItemDetail = ({ item }) => {
     return (
-        <div style={{ display: 'flex' }}>
-            <img src={item.img} alt="img" />
+        <div
+            style={{
+                display: 'flex',
+                justifyContent: 'center',
+                margin: '20px',
+            }}
+        >
             <div>
+                <img
+                    width={400}
+                    src={item.img}
+                    alt="img"
+                    style={{ margin: '10px' }}
+                />
+            </div>
+            <div style={{ width: '50%' }}>
                 <h2>{item.name}</h2>
                 <h3>$ {item.price}</h3>
-                {irAlCarrito ? (
-                    <>
-                        <Link to="/cart">Terminar compra</Link>
-                    </>
-                ) : (
-                    <>
-                        <Counter stock={item.stock} onAdd={onAdd} />
-                    </>
-                )}
-                <button onClick={() => onAdd(number)}>
-                    Agregar al carrito
-                </button>
+                <h4 style={{ width: '70%' }}>{item.description}</h4>
             </div>
         </div>
     );
