@@ -4,6 +4,7 @@ export const CartContext = React.createContext();
 
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
+    const [userEmail, setUserEmail] = useState('');
 
     const addToCart = (item, cantidad) => {
         total();
@@ -26,9 +27,21 @@ export const CartProvider = ({ children }) => {
         setCart([]);
     };
 
+    const getUser = (form) => {
+        setUserEmail(form);
+    };
+
     return (
         <CartContext.Provider
-            value={{ addToCart, cart, deleteItem, total, deleteAll }}
+            value={{
+                addToCart,
+                cart,
+                deleteItem,
+                total,
+                deleteAll,
+                getUser,
+                userEmail,
+            }}
         >
             {children}
         </CartContext.Provider>

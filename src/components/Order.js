@@ -4,17 +4,26 @@ import {
     getDocs,
     orderBy,
     query,
+    where,
 } from 'firebase/firestore';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Mensaje from './Mensaje';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../context/CartContext';
 
 const Order = () => {
     const [order, setOrder] = useState([]);
+    //const { userEmail } = useContext(CartContext);
+    //const { email } = userEmail;
+    //console.log(email);
 
     useEffect(() => {
         const db = getFirestore();
-        const ref = query(collection(db, 'ticket'), orderBy('date'));
+        const ref = query(
+            collection(db, 'ticket'),
+            orderBy('date')
+            //where('buyer', '=', `${email}`),
+        );
         getDocs(ref).then((snapshot) => {
             const orden = snapshot.docs.map((doc) => {
                 const data = doc.data();

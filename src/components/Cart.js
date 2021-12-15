@@ -1,13 +1,15 @@
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { CartContext } from '../context/CartContext';
 import CartDetail from './CartDetail';
 import Order from './Order';
 
 const Cart = () => {
-    const { cart, total, deleteAll } = useContext(CartContext);
+    const { cart, total, deleteAll, getUser } = useContext(CartContext);
     const [goTicket, setGoTicket] = useState(false);
-    const [form, getForm] = useState({});
+    const [form, getForm] = useState({ nombre: '', email: '' });
+
+    useEffect(() => {}, [form]);
 
     const llenarFormulario = (e) => {
         const { name, value } = e.target;
@@ -16,15 +18,15 @@ const Cart = () => {
             [name]: value,
         });
     };
-    console.log(form);
 
     const date = new Date();
 
     const finalizar = () => {
+        getUser(form);
         const db = getFirestore();
         const ref = collection(db, 'ticket');
         const newOrder = {
-            buyer: form,
+            buyer: form.email,
             items: cart,
             date: date,
             total: total(),
@@ -36,45 +38,51 @@ const Cart = () => {
 
     return (
         <>
-            {!goTicket ? (
-                <>
-                    {cart.map((prod) => (
-                        <CartDetail key={prod.id} prod={prod} />
-                    ))}
-                    <div>
-                        <p>TOTAL: $ {total()}</p>
-                    </div>
-                    <div>
-                        <button onClick={deleteAll}>Vaciar Carrito</button>
-                    </div>
-                    <form style={{ margin: '15px 0px' }}>
-                        <input
-                            onChange={llenarFormulario}
-                            type="email"
-                            name="email"
-                            placeholder="email"
-                        />
-                        <input
-                            onChange={llenarFormulario}
-                            type="text"
-                            name="nombre"
-                            placeholder="nombre"
-                        />
-                    </form>
-                    <div>
-                        <button
-                            onClick={finalizar}
-                            disabled={form.email === '' || form.nombre === ''}
+            <>
+                {!goTicket ? (
+                    <>
+                        {cart.map((prod) => (
+                            <CartDetail key={prod.id} prod={prod} />
+                        ))}
+                        <div>
+                            <p>TOTAL: $ {total()}</p>
+                        </div>
+                        <div>
+                            <button onClick={deleteAll}>Vaciar Carrito</button>
+                        </div>
+                        <form
+                            onSubmit={finalizar}
+                            style={{ margin: '15px 0px' }}
                         >
-                            Finalizar compra 🙌🏼
-                        </button>
-                    </div>
-                </>
-            ) : (
-                <>
-                    <Order />
-                </>
-            )}
+                            <input
+                                onChange={llenarFormulario}
+                                type="email"
+                                name="email"
+                                placeholder="email"
+                            />
+                            <input
+                                onChange={llenarFormulario}
+                                type="text"
+                                name="nombre"
+                                placeholder="nombre"
+                            />
+                            <button
+                                disabled={
+                                    cart?.length === 0 ||
+                                    form.nombre === '' ||
+                                    form.email === ''
+                                }
+                            >
+                                Finalizar compra 🙌🏼
+                            </button>
+                        </form>
+                    </>
+                ) : (
+                    <>
+                        <Order />
+                    </>
+                )}
+            </>
         </>
     );
 };
