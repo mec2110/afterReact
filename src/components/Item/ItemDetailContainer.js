@@ -1,10 +1,4 @@
-import {
-    doc,
-    getDoc,
-    collection,
-    getFirestore,
-    getDocs,
-} from 'firebase/firestore';
+import { doc, getDoc, getFirestore } from 'firebase/firestore';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -19,7 +13,10 @@ const ItemDetailContainer = () => {
         const db = getFirestore();
         const ref = doc(db, 'products', id);
         getDoc(ref).then((snap) => {
-            setItem(snap.data());
+            setItem({
+                id: snap.id,
+                ...snap.data(),
+            });
         });
         setLoading(false);
     }, [id]);
