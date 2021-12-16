@@ -28,6 +28,8 @@ const CartDetail = ({ prod }) => {
                 >
                     <p>{prod.name}</p>
                     <p>$ {prod.price}</p>
+                    <p>Cantidad: {prod.cantidad}</p>
+                    <p>Total item: ${prod.price * prod.cantidad} </p>
                     <p>{prod.description}</p>
                 </div>
                 <div>
