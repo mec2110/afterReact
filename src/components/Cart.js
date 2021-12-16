@@ -49,6 +49,7 @@ const Cart = () => {
                             <button onClick={deleteAll}>Vaciar Carrito</button>
                         </div>
                         <form
+                            method="POST"
                             onSubmit={finalizar}
                             style={{ margin: '15px 0px' }}
                         >

@@ -33,6 +33,7 @@ const Order = () => {
                     date: normalizedCreatedAt,
                 };
             });
+
             setOrder(orden.filter((x) => x.buyer === email));
         });
     }, [email]);
@@ -40,7 +41,7 @@ const Order = () => {
     return (
         <div>
             {order?.length === 0 ? (
-                <h1>No hay ordenes</h1>
+                <h1>Cargando...</h1>
             ) : (
                 <>
                     <h1 style={{ textAlign: 'center' }}>

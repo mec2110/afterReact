@@ -1,8 +1,7 @@
 import React from 'react';
 
 const Mensaje = ({ ord }) => {
-    const nameprod = ord.items.map((x) => x.name);
-    const { buyer } = ord;
+    const nombreDelProducto = ord.items.map((ticket) => ticket.name);
 
     return (
         <div
@@ -12,10 +11,14 @@ const Mensaje = ({ ord }) => {
                 padding: '7px',
             }}
         >
-            <h2 style={{ color: 'red', fontSize: '17px' }}>{ord.id}</h2>
-            <h2 style={{ fontSize: '15px' }}>{ord.date}</h2>
-            <h2 style={{ fontSize: '15px' }}>{nameprod}</h2>
-            <h2 style={{ fontSize: '15px' }}>{buyer}</h2>
+            <h2 style={{ color: 'red', fontSize: '17px' }}>
+                Id de la compra: {ord.id}
+            </h2>
+            <h2 style={{ fontSize: '15px' }}>Fecha: {ord.date}</h2>
+            <h2 style={{ fontSize: '15px' }}>
+                Nombre del producto: {nombreDelProducto}
+            </h2>
+            <h2 style={{ fontSize: '15px' }}>Email: {ord.buyer}</h2>
         </div>
     );
 };
