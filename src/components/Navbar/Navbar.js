@@ -34,40 +34,20 @@ const Navbar = () => {
                 >
                     <Link to="/login">Login</Link>
                 </li>
-                <li
-                    style={{
-                        margin: '0px 10px',
-                    }}
-                >
-                    <Link to="/category/remeras">Remeras</Link>
-                </li>
-                <li
-                    style={{
-                        margin: '0px 10px',
-                    }}
-                >
-                    <Link to="/category/camisas">Camisas</Link>
-                </li>
-                <li
-                    style={{
-                        margin: '0px 10px',
-                    }}
-                >
-                    <Link to="/category/gorras">Gorras</Link>
-                </li>
-                <li
-                    style={{
-                        margin: '0px 10px',
-                    }}
-                >
-                    <Link to="/category/rinoneras">Rinoneras</Link>
-                </li>
+
                 <li
                     style={{
                         margin: '0px 10px',
                     }}
                 >
                     <Link to="/cart">Carrito</Link>
+                </li>
+                <li
+                    style={{
+                        margin: '0px 10px',
+                    }}
+                >
+                    <Link to="/catalogo">Catalogo</Link>
                 </li>
             </ul>
         </nav>
