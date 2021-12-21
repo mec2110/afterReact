@@ -24,7 +24,7 @@ const Cart = () => {
         const db = getFirestore();
         const ref = collection(db, 'ticket');
         const newOrder = {
-            buyer: form.email,
+            buyer: { email: form.email, nombre: form.nombre },
             items: cart,
             date: date,
             total: total(),

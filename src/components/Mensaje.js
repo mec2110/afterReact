@@ -18,7 +18,7 @@ const Mensaje = ({ ord }) => {
             <h2 style={{ fontSize: '15px' }}>
                 Nombre del producto: {nombreDelProducto}
             </h2>
-            <h2 style={{ fontSize: '15px' }}>Email: {ord.buyer}</h2>
+            <h2 style={{ fontSize: '15px' }}>Email: {ord.buyer.email}</h2>
         </div>
     );
 };

@@ -13,7 +13,7 @@ import { CartContext } from '../context/CartContext';
 const Order = () => {
     const [order, setOrder] = useState([]);
     const { userEmail } = useContext(CartContext);
-    const { email } = userEmail;
+    const { email, nombre } = userEmail;
 
     useEffect(() => {
         const db = getFirestore();
@@ -33,8 +33,7 @@ const Order = () => {
                     date: normalizedCreatedAt,
                 };
             });
-
-            setOrder(orden.filter((x) => x.buyer === email));
+            setOrder(orden.filter((x) => x.buyer.email === email));
         });
     }, [email]);
 

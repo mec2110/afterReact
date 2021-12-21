@@ -71,3 +71,25 @@ export const CartProvider = ({ children }) => {
         </CartContext.Provider>
     );
 };
+
+//Otra forma de ver si el item ya está en el carrito y en caso de que esté, sumar la cantidad:
+/*     const index = cart.findIndex(i => i.id === item.id) // pos -1
+
+    if (index > -1) {
+        //se suma la cantidad
+        const oldQnty = cart[index].cantidad
+
+        cart.splice(index, 1)
+
+        setCart([...cart, {...item, cantidad: item.cantidad + oldQnty}])
+    } else {
+        setCart([...cart, {...item, cantidad}])
+    } */
+
+//OTRA FORMA DE CONSULTAR SI EXISTE ES CON UN .SOME
+
+/* const isInCart = () =>{
+    return cart.some(prod => item === prod)
+
+    esto devuelve true or false
+} */
