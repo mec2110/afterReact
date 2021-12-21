@@ -15,8 +15,8 @@ function App() {
             <CartProvider>
                 <Router>
                     <Navbar />
-                    <Login />
                     <Routes>
+                        <Route path="/login" element={<Login />} />
                         <Route path="/" element={<ItemListContainer />} />
                         <Route
                             path="/category/:id"

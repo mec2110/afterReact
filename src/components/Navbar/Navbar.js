@@ -32,6 +32,13 @@ const Navbar = () => {
                         margin: '0px 10px',
                     }}
                 >
+                    <Link to="/login">Login</Link>
+                </li>
+                <li
+                    style={{
+                        margin: '0px 10px',
+                    }}
+                >
                     <Link to="/category/remeras">Remeras</Link>
                 </li>
                 <li
