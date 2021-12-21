@@ -6,23 +6,31 @@ import Navbar from './components/Navbar/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 //import Cart from './components/Cart';
 import { CartProvider } from './context/CartContext';
+import Login from './components/Login';
+import { UserProvider } from './context/UserContext';
 
 function App() {
     return (
-        <CartProvider>
-            <Router>
-                <Navbar />
-                <Routes>
-                    <Route path="/" element={<ItemListContainer />} />
-                    <Route
-                        path="/category/:id"
-                        element={<ItemListContainer />}
-                    />
-                    <Route path="/item/:id" element={<ItemDetailContainer />} />
-                    <Route path="/cart" element={<Cart />} />
-                </Routes>
-            </Router>
-        </CartProvider>
+        <UserProvider>
+            <CartProvider>
+                <Router>
+                    <Navbar />
+                    <Login />
+                    <Routes>
+                        <Route path="/" element={<ItemListContainer />} />
+                        <Route
+                            path="/category/:id"
+                            element={<ItemListContainer />}
+                        />
+                        <Route
+                            path="/item/:id"
+                            element={<ItemDetailContainer />}
+                        />
+                        <Route path="/cart" element={<Cart />} />
+                    </Routes>
+                </Router>
+            </CartProvider>
+        </UserProvider>
     );
 }
 

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
 
 const Navbar = () => {
+    const { user } = useContext(UserContext);
+
     return (
         <nav
             style={{
@@ -22,6 +25,8 @@ const Navbar = () => {
                     listStyle: 'none',
                 }}
             >
+                {user ? <li>{`Bienvenido ${user.email}`}</li> : <span></span>}
+
                 <li
                     style={{
                         margin: '0px 10px',

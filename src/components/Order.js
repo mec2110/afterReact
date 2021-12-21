@@ -13,7 +13,7 @@ import { CartContext } from '../context/CartContext';
 const Order = () => {
     const [order, setOrder] = useState([]);
     const { userEmail } = useContext(CartContext);
-    const { email, nombre } = userEmail;
+    const { email } = userEmail;
 
     useEffect(() => {
         const db = getFirestore();
