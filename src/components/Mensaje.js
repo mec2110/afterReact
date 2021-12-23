@@ -21,6 +21,7 @@ const Mensaje = ({ ord }) => {
                         <li>
                             {prod.name} ${prod.price} x {prod.cantidad}
                         </li>
+                        <img width={150} src={prod.img} alt={prod.name} />
                     </ul>
                 ))}
             </h2>

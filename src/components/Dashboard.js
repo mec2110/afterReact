@@ -22,6 +22,7 @@ const Dashboard = () => {
             const orden = snapshot.docs.map((doc) => {
                 const data = doc.data();
                 const { date } = data;
+                console.log(date);
                 const fecha = new Date(date.seconds * 1000);
                 const normalizedCreatedAt = new Intl.DateTimeFormat('es-ES', {
                     dateStyle: 'full',
@@ -33,7 +34,7 @@ const Dashboard = () => {
                     date: normalizedCreatedAt,
                 };
             });
-            setOrder(orden.filter((x) => x.buyer.email === email));
+            setOrder(orden.filter((ticket) => ticket.buyer.email === email));
         });
     }, [email]);
 
