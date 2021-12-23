@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../../context/UserContext';
+import { useContext } from 'react/cjs/react.development';
+import { CartContext } from '../../context/CartContext';
 
 const Navbar = () => {
-    const { user } = useContext(UserContext);
+    const { totalUnidades } = useContext(CartContext);
 
     return (
         <nav
@@ -25,15 +26,6 @@ const Navbar = () => {
                     listStyle: 'none',
                 }}
             >
-                {user ? <li>{`Bienvenido ${user.email}`}</li> : <span></span>}
-
-                <li
-                    style={{
-                        margin: '0px 10px',
-                    }}
-                >
-                    <Link to="/login">Login</Link>
-                </li>
                 <li
                     style={{
                         margin: '0px 10px',
@@ -68,6 +60,7 @@ const Navbar = () => {
                     }}
                 >
                     <Link to="/cart">Carrito</Link>
+                    <span>{totalUnidades()}</span>
                 </li>
             </ul>
         </nav>

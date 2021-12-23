@@ -7,12 +7,9 @@ export const CartProvider = ({ children }) => {
     const [userEmail, setUserEmail] = useState('');
 
     const isOnCart = (id) => {
-        const carrito = cart.find((x) => x.id === id);
-        if (carrito !== undefined) {
-            return true;
-        } else {
-            return false;
-        }
+        const carrito = cart.some((x) => x.id === id);
+
+        return carrito;
     };
 
     const addToCart = (item, cantidad) => {
@@ -27,11 +24,7 @@ export const CartProvider = ({ children }) => {
     const sumarCantidad = (item, cantidad) => {
         const unid = [...cart];
         unid.forEach((x) => {
-            (x.id === item.id) & (x.cantidad !== item.stock)
-                ? (x.cantidad += cantidad)
-                : alert(
-                      'Ya tenés la máxima cantidad de este item en el carrito'
-                  );
+            x.id === item.id && (x.cantidad += cantidad);
         });
     };
 
@@ -41,10 +34,15 @@ export const CartProvider = ({ children }) => {
 
     const total = () => {
         const sumaTotal = cart.reduce(
-            (acc, prev) => acc + prev.cantidad * prev.price,
+            (prev, curr) => prev + curr.cantidad * curr.price,
             0
         );
         return sumaTotal;
+    };
+
+    const totalUnidades = () => {
+        const unidades = cart.reduce((prev, curr) => prev + curr.cantidad, 0);
+        return unidades;
     };
 
     const deleteAll = () => {
@@ -65,6 +63,7 @@ export const CartProvider = ({ children }) => {
                 deleteAll,
                 getUser,
                 userEmail,
+                totalUnidades,
             }}
         >
             {children}

@@ -10,14 +10,14 @@ import Mensaje from './Mensaje';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 
-const Order = () => {
+const Dashboard = () => {
     const [order, setOrder] = useState([]);
     const { userEmail } = useContext(CartContext);
     const { email } = userEmail;
 
     useEffect(() => {
         const db = getFirestore();
-        const ref = query(collection(db, 'ticket'), orderBy('date'));
+        const ref = query(collection(db, 'tickets'), orderBy('date'));
         getDocs(ref).then((snapshot) => {
             const orden = snapshot.docs.map((doc) => {
                 const data = doc.data();
@@ -39,21 +39,24 @@ const Order = () => {
 
     return (
         <div>
-            {order?.length === 0 ? (
-                <h1>Cargando...</h1>
-            ) : (
-                <>
-                    <h1 style={{ textAlign: 'center' }}>
-                        Acá te dejamos tus tickets de compra 😊
-                    </h1>
-                    {order.map((ord) => (
-                        <Mensaje key={ord.id} ord={ord} />
-                    ))}
-                </>
-            )}
+            <>
+                {order.length === 0 ? (
+                    <h1>Aún no tenés órdenes de compra</h1>
+                ) : (
+                    <>
+                        <h1 style={{ textAlign: 'center' }}>
+                            Acá te dejamos tus tickets de compra 😊
+                        </h1>
+                        {order.map((ord) => (
+                            <Mensaje key={ord.id} ord={ord} />
+                        ))}
+                    </>
+                )}
+            </>
+
             <Link to="/">Volver al Home</Link>
         </div>
     );
 };
 
-export default Order;
+export default Dashboard;

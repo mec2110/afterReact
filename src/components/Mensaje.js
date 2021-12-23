@@ -1,8 +1,6 @@
 import React from 'react';
 
 const Mensaje = ({ ord }) => {
-    const nombreDelProducto = ord.items.map((ticket) => ticket.name);
-
     return (
         <div
             style={{
@@ -14,11 +12,19 @@ const Mensaje = ({ ord }) => {
             <h2 style={{ color: 'red', fontSize: '17px' }}>
                 Id de la compra: {ord.id}
             </h2>
+            <h2 style={{ fontSize: '15px' }}>Email: {ord.buyer.email}</h2>
             <h2 style={{ fontSize: '15px' }}>Fecha: {ord.date}</h2>
             <h2 style={{ fontSize: '15px' }}>
-                Nombre del producto: {nombreDelProducto}
+                Nombre de los productos:{' '}
+                {ord.items.map((prod, index) => (
+                    <ul key={index}>
+                        <li>
+                            {prod.name} ${prod.price} x {prod.cantidad}
+                        </li>
+                    </ul>
+                ))}
             </h2>
-            <h2 style={{ fontSize: '15px' }}>Email: {ord.buyer.email}</h2>
+            <h2 style={{ fontSize: '15px' }}>Total: ${ord.total}</h2>
         </div>
     );
 };

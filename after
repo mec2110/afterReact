@@ -1,0 +1,19 @@
+** funciones del context **
+    -> sumar solo cantidad cuando el item es repetido
+    -> agregar al carrito si no está repetido
+    -> borrar único item
+    -> borrar todo el carrito
+    -> total del carrito
+    -> total unidades del carrito (para pasarle al CartWidget)
+
+** firebase **
+    -> repaso ItemListContainer
+    -> repaso ItemDetailContainer
+    -> repaso actualizar Stock y crear orden
+    -> cargar productos de manera automática
+
+** readme **
+
+** cloudinary **
+
+** login con google **
