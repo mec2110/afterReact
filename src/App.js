@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import Login from './components/Login';
 import { UserProvider } from './context/UserContext';
+import Dashboard from './components/Dashboard';
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
                             element={<ItemDetailContainer />}
                         />
                         <Route path="/cart" element={<Cart />} />
+                        <Route path="/dashboard" element={<Dashboard />} />
                     </Routes>
                 </Router>
             </CartProvider>
