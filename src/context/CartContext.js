@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export const CartContext = React.createContext();
 
 export const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(() => {
+        const localData = localStorage.getItem('items');
+        return localData ? JSON.parse(localData) : [];
+    });
     const [userEmail, setUserEmail] = useState('');
+
+    useEffect(() => {
+        window.localStorage.setItem('items', JSON.stringify(cart));
+    }, [cart]);
 
     const isOnCart = (id) => {
         const carrito = cart.find((x) => x.id === id);
