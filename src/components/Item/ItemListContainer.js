@@ -17,8 +17,10 @@ const ItemListContainer = () => {
                     ...doc.data(),
                 };
             });
-            const categorias = products.filter((i) => i.category === `${id}`);
-            id === undefined ? setItems(products) : setItems(categorias);
+
+            id === undefined
+                ? setItems(products)
+                : setItems(products.filter((i) => i.category === `${id}`));
         });
     }, [id]);
 

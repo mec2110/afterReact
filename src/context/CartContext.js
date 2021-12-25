@@ -34,11 +34,9 @@ export const CartProvider = ({ children }) => {
     const sumarCantidad = (item, cantidad) => {
         const unid = [...cart];
         unid.forEach((x) => {
-            (x.id === item.id) & (x.cantidad !== item.stock)
-                ? (x.cantidad += cantidad)
-                : alert(
-                      'Ya tenés la máxima cantidad de este item en el carrito'
-                  );
+            if ((x.id === item.id) & (cantidad + x.cantidad <= item.stock)) {
+                x.cantidad += cantidad;
+            }
         });
     };
 
@@ -58,6 +56,26 @@ export const CartProvider = ({ children }) => {
         setCart([]);
     };
 
+    const suma = (id) => {
+        cart.forEach((item) => {
+            if (item.id === id) {
+                item.cantidad += 1;
+            }
+            setCart([...cart]);
+        });
+    };
+
+    const resta = (id) => {
+        cart.forEach((item) => {
+            if (item.id === id) {
+                item.cantidad === 1
+                    ? (item.cantidad = 1)
+                    : (item.cantidad -= 1);
+            }
+            setCart([...cart]);
+        });
+    };
+
     const getUser = (form) => {
         setUserEmail(form);
     };
@@ -72,6 +90,8 @@ export const CartProvider = ({ children }) => {
                 deleteAll,
                 getUser,
                 userEmail,
+                suma,
+                resta,
             }}
         >
             {children}
